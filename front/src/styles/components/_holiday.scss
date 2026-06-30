@@ -1,0 +1,18 @@
+.calendar {
+
+  &__holiday-list {
+    margin-top: clamp(1rem, 3vw, 2rem);
+  }
+
+  &__holiday-title {
+    font-weight: bold;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin-bottom: 0.5rem;
+  }
+
+  &__holiday-ul {
+    padding-left: 1.2rem;
+    list-style: disc;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
+  }
+}

@@ -1,0 +1,76 @@
+/* =========================
+   Reset CSS（モダン版）
+========================= */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* margin / padding 初期化 */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* html / body */
+html {
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+/* 画像・メディア */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* フォーム系 */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+/* リスト */
+ul,
+ol {
+  list-style: none;
+}
+
+/* リンク */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* テーブル */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ボタン */
+button {
+  cursor: pointer;
+}
+
+/* 見出し */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}

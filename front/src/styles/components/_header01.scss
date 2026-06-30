@@ -1,0 +1,40 @@
+@use "../foundation/variables" as *;
+
+.calendar {
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  &__nav-button {
+    // aspect-ratio: 1;
+    height: clamp(40px, 8vw, 60px);
+    width: clamp(40px, 8vw, 60px);
+    background: $green-main;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-large;
+    cursor: pointer;
+  }
+
+  &__nav-center {
+    flex: 1;
+    background: $green-main;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-header;
+    height: clamp(40px, 8vw, 60px);
+    // padding: clamp(0.5rem, 2vw, 1rem);
+    // padding: 8px 0;
+
+    &--clickable {
+      cursor: pointer;
+    }
+  }
+}

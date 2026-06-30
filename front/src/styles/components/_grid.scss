@@ -1,0 +1,54 @@
+@use "../foundation/variables" as *;
+
+.calendar {
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+
+  &__cell {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $border-main;
+  }
+
+  &__date-cell {
+    aspect-ratio: 1 / 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-large;
+    border-bottom: 1px solid $border-sub;
+    background: $bg-cell;
+
+    &--holiday {
+      background: $color-holiday-bg;
+      color: $color-holiday-text;
+    }
+
+    &--sunday { color: $color-sunday; }
+    &--saturday { color: $color-saturday; }
+    &--weekday { color: #6b7280; }
+  }
+
+  &__mark {
+    aspect-ratio: 1 / 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $font-base;
+  }
+
+  &__today-circle {
+    width: 40%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #6b7280;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

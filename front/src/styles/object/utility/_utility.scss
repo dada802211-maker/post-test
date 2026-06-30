@@ -1,0 +1,18 @@
+.pc-only {
+  display: block;
+}
+
+.sp-only {
+  display: none;
+}
+
+/* スマホ */
+@media (max-width: 768px) {
+  .pc-only {
+    display: none;
+  }
+
+  .sp-only {
+    display: block;
+  }
+}

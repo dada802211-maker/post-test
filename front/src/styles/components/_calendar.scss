@@ -1,0 +1,27 @@
+@use "../foundation/variables" as *;
+
+.calendar {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  background: $bg-main;
+  padding: clamp(0.5rem, 3vw, 2rem);
+
+  &__container {
+    width: 100%;
+    max-width: 900px;
+  }
+}
+
+.calendar__cell--clickable {
+  cursor: pointer;
+}
+
+.calendar__cell:not(.calendar__cell--clickable) {
+  cursor: default;
+}
+
+.calendar__mark {
+  color: red;
+  font-weight: bold;
+}

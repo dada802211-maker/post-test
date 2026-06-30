@@ -75,7 +75,7 @@ export default function GroupDetail() {
 
     if (data.success) {
       toast.success("削除しました");
-      navigate("/");
+      navigate("/group-list");
     }
   };
 

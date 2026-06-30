@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import './GroupCreate.scss';
+import { toast } from "sonner";
 
 type User = {
   id: string;
@@ -9,6 +11,7 @@ type User = {
 export default function GroupCreate() {
   const [users, setUsers] = useState<User[]>([]);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [groupName, setGroupName] = useState('');
   const baseURL = import.meta.env.VITE_API_URL;
 
   const handleCheck = (id: string) => {
@@ -40,51 +43,101 @@ export default function GroupCreate() {
   //     console.log(user.email);
   //   });
   // }, [users]);
+  const handleSubmit = async () => {
+    try {
+      const res = await fetch(`${baseURL}/createGroup.php`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          groupName,
+          userIds: selectedIds,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        toast.success("グループを作成しました 🎉");
+
+        // リセット（おすすめ）
+        setGroupName("");
+        setSelectedIds([]);
+      } else {
+        toast.error(data.message || "作成に失敗しました");
+      }
+
+    } catch (err) {
+      console.error(err);
+      toast.error("通信エラーが発生しました");
+    }
+  };
 
   return (
-    <div style={{ color: "#333", padding: "20px" }}>
-      <h2>ユーザー選択</h2>
+    <div className="group-create">
+      <h2 className="group-create__title">ユーザー選択</h2>
 
-      <div
-        style={{
-          height: "300px",
-          overflowY: "auto",
-          border: "1px solid #ccc",
-          padding: "10px",
-        }}
-      >
+      <div className="group-create__header">
+        <button
+          className="group-create__submit"
+          onClick={handleSubmit}
+          disabled={!groupName}
+        >
+          グループ作成
+        </button>
+
+        <div className="group-create__form">
+          <label className="group-create__label">
+            グループ名
+          </label>
+          <input
+            className="group-create__input"
+            type="text"
+            value={groupName}
+            onChange={e => setGroupName(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div className="group-create__list">
         {users.map((user) => (
           <label
             key={user.id}
-            style={{
-              display: "block",
-              marginBottom: "8px",
-            }}
+            className="group-create__item"
           >
             <input
+              className="group-create__checkbox"
               type="checkbox"
               checked={selectedIds.includes(user.id)}
               onChange={() => handleCheck(user.id)}
             />
-            {" "}
-            {user.name}({user.email})
+            <span className="group-create__user">
+              {user.name} ({user.email})
+            </span>
           </label>
         ))}
       </div>
 
-      <h3>選択されたユーザー</h3>
-      <pre>{JSON.stringify(selectedIds, null, 2)}</pre>
-      <h3>選択されたユーザー</h3>
-      <ul>
-        {selectedIds.map((id) => {
-          const user = users.find((u) => u.id === id);
-          return (
-            <li key={id}>
-              {user ? `${user.name} (${user.email})` : "不明なユーザー"}
-            </li>
-          );
-        })}
-      </ul>
+      <div className="group-create__selected">
+        <h3>選択されたユーザー</h3>
+
+        <pre className="group-create__json">
+          {JSON.stringify(selectedIds, null, 2)}
+        </pre>
+
+        <ul className="group-create__selected-list">
+          {selectedIds.map((id) => {
+            const user = users.find((u) => u.id === id);
+            return (
+              <li key={id} className="group-create__selected-item">
+                {user
+                  ? `${user.name} (${user.email})`
+                  : "不明なユーザー"}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 }

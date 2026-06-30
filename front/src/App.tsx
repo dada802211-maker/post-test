@@ -5,6 +5,8 @@ import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import './styles/style.scss';
 import GroupCreate from "./pages/GroupCreate"
+import GroupList from "./pages/GroupList"
+import GroupDetail from "./pages/GroupDetail"
 
 function App() {
 
@@ -16,6 +18,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="group-create" element={<GroupCreate />} />
+            <Route path="group-list" element={<GroupList />} />
+            <Route path="group-detail/:id" element={<GroupDetail />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

@@ -17,6 +17,9 @@ export default function Header() {
               <Link to="/">ホーム</Link>
             </li>
             <li>
+              <Link to="/group-list">グループ一覧</Link>
+            </li>
+            <li>
               <Link to="/group-create">グループ新規登録</Link>
             </li>
 

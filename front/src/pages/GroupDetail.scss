@@ -1,0 +1,31 @@
+.group-detail {
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+
+  &__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  &__delete {
+    background: red;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+  }
+
+  &__members,
+  &__users {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__member {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+}

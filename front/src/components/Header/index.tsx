@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="l-header">
       <div className="l-header__inner">
-        <h1 className="l-header__logo">MyApp</h1>
+        <h1 className="l-header__logo">グループ作成</h1>
 
         {/* ===== PCメニュー ===== */}
         <nav className="l-header__nav pc-only">

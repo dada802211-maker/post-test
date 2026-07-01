@@ -19,9 +19,9 @@ export default function Header() {
             <li>
               <Link to="/group-list">グループ一覧</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/group-create">グループ新規登録</Link>
-            </li>
+            </li> */}
 
           </ul>
         </nav>

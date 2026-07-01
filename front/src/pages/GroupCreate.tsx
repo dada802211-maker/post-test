@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './GroupCreate.scss';
 import { toast } from "sonner";
+import { useNavigate } from 'react-router-dom';
 
 type User = {
   id: string;
@@ -13,6 +14,7 @@ export default function GroupCreate() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [groupName, setGroupName] = useState('');
   const baseURL = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
 
   const handleCheck = (id: string) => {
     setSelectedIds((prev) =>
@@ -28,21 +30,10 @@ export default function GroupCreate() {
       .then((data) => {
         setUsers(data);
 
-        // ここでログ
-        // data.forEach(user => {
-        //   console.log(user.name);
-        // });
       })
       .catch((err) => console.error(err));
   }, []);
 
-  // useEffect(() => {
-  //   users.forEach(user => {
-  //     console.log(user.id);
-  //     console.log(user.name);
-  //     console.log(user.email);
-  //   });
-  // }, [users]);
   const handleSubmit = async () => {
     try {
       const res = await fetch(`${baseURL}/createGroup.php`, {
@@ -63,6 +54,7 @@ export default function GroupCreate() {
         // リセット（おすすめ）
         setGroupName("");
         setSelectedIds([]);
+        navigate('/group-list');
       } else {
         toast.error(data.message || "作成に失敗しました");
       }
@@ -118,7 +110,7 @@ export default function GroupCreate() {
         ))}
       </div>
 
-      <div className="group-create__selected">
+      {/* <div className="group-create__selected">
         <h3>選択されたユーザー</h3>
 
         <pre className="group-create__json">
@@ -137,7 +129,7 @@ export default function GroupCreate() {
             );
           })}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 }

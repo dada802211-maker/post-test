@@ -77,6 +77,13 @@ export default function GroupList() {
 
   return (
     <div className="group-list">
+      <Link
+        to="/group-create"
+        style={{ display: "block", marginBottom: "1.5rem" }}
+        className="group-list__create-btn"
+      >
+        ＋
+      </Link>
       <h2 className="group-list__title">グループ一覧</h2>
 
       {groups.length === 0 ? (
@@ -103,7 +110,7 @@ export default function GroupList() {
                   )}
                   <Link to={`/group-detail/${group.id}`}>
                     <span className="group-list__count">
-                      {group.member_count}人
+                      {group.member_count}人：詳細
                     </span>
                   </Link>
                 </div>

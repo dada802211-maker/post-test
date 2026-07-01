@@ -23,9 +23,26 @@
     padding: 0;
   }
 
+  &__users li button {
+    margin-left: 8px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+  }
+
   &__member {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
+    button {
+      margin-left: 8px;
+      background: red;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
   }
 }
